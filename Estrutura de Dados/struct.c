@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <malloc.h>
 #define alturaMaxima 225
 
 // criando uma estrutura em C similar ao que se vê em uma classe
@@ -13,16 +14,23 @@ typedef struct
 int main()
 {   
     int x;
-    PesoAltura pessoa1;
-    pessoa1.peso = 80;
-    pessoa1.altura = 185;
+    // PesoAltura pessoa1;
+    // pessoa1.peso = 80;
+    // pessoa1.altura = 185;
 
-    printf("\nPeso: %i, Altura %i. \n", pessoa1.peso, pessoa1.altura);
+    // tipo ponteiro
+    PesoAltura *pessoa1 = (PesoAltura*) malloc(sizeof(PesoAltura));
+    
+    // novo método de acessar os campos de uma estrutura utilizando ponteiros '->'
+    pessoa1->peso = 80;
+    pessoa1->altura = 185;
 
-    if (pessoa1.altura > alturaMaxima) printf("Altura acima da máxima!\n");     
+    printf("\nPeso: %i, Altura %i. \n", pessoa1->peso, pessoa1->altura);
+
+    if (pessoa1->altura > alturaMaxima) printf("Altura acima da máxima!\n");     
     else printf("Altura abaixo da máxima!\n");
 
-    printf("%p %p %p\n", &x, &pessoa1, &(pessoa1.altura));
+    printf("%p %p %p\n", &x, &pessoa1, &(pessoa1->altura));
 
     return 0;
 }
