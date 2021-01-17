@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() 
+int main(void) 
 {
     // Declaração variável e ponteiro
     int ano, *pAno;
@@ -9,7 +10,7 @@ int main()
     ano = 2020;
     pAno = &ano;
 
-    printf("%d\n", *pAno);
+    printf("\n%d\n", *pAno);
     // O valor de 'ano': 2020
 
     printf("%d\n", *&ano);
@@ -18,14 +19,15 @@ int main()
     // ld - long int, sizeof permite-nos ver o tamanho em bytes da variável
     printf("%ld bytes\n", sizeof(*pAno));
 
-    printf("%d", &ano);
-    // Endereço na memória de 'ano'
+    // %p para endereços em notação hexadecimal, sendo necessário fazer o cast (void *)
+    printf("Endereço na memória de ano   -> %p\n", (void *) &ano);
 
-    // printf("%u", pAno);
+    printf("Conteúdo da variável pAno    -> %p\n", (void *) pAno);
     // Endereço de 'ano' também
 
-    // printf("%u", &pAno);
+    printf("Endereço na memória de &pAno -> %p\n", (void *)&pAno);
     // Endereço de 'pAno' <> 'ano'
 
-    return 0;
+    printf("\n");
+    return EXIT_SUCCESS;
 }
